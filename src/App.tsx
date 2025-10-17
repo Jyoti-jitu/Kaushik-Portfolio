@@ -22,7 +22,7 @@ function App() {
           element.scrollIntoView({
             behavior: 'smooth',
             block: 'start'
-          });
+          }); 
         }
       }
     };
