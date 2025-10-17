@@ -1,4 +1,4 @@
-import React from 'react';
+// no React default import needed
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Github, ExternalLink } from 'lucide-react';
@@ -36,75 +36,7 @@ const projects: Project[] = [
   
 ];
 
-const ProjectCard = ({ project }: { project: Project }) => {
-  const [isHovered, setIsHovered] = React.useState(false);
-
-  return (
-    <motion.div
-      className="relative group rounded-lg overflow-hidden bg-surface/40 hover:translate-y-[-8px] transition-all duration-300 hover:shadow-[0_0_20px_rgba(14,165,233,0.2)] hover:border-sky-500 border border-transparent"
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      whileHover={{ scale: 1.02 }}
-    >
-      <div className="relative h-[200px] w-full overflow-hidden rounded-t-lg">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-900/90" />
-      </div>
-
-      <div className="p-6">
-        <h3 className="text-xl font-semibold text-slate-100 mb-2">{project.title}</h3>
-        <p className="text-slate-400 text-sm line-clamp-2 mb-4 font-medium">{project.summary}</p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ 
-            opacity: isHovered ? 1 : 0,
-            y: isHovered ? 0 : 20
-          }}
-          transition={{ 
-            duration: 0.3,
-            ease: [0.4, 0, 0.2, 1]
-          }}
-          className="flex items-center gap-4 relative z-10"
-        >
-          <motion.a
-            href={project.codeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-sky-500 to-sky-400 rounded-lg text-white text-sm font-medium transition-all duration-300 hover:shadow-[0_0_20px_rgba(14,165,233,0.3)] hover:translate-y-[-2px]"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Github size={16} />
-            Code
-          </motion.a>
-          <motion.a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg text-white text-sm font-medium transition-all duration-300 hover:shadow-[0_0_20px_rgba(71,85,105,0.3)] hover:translate-y-[-2px]"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <ExternalLink size={16} />
-            Visit
-          </motion.a>
-        </motion.div>
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isHovered ? 0.8 : 0 }}
-        transition={{ duration: 0.2 }}
-        className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/70 to-transparent pointer-events-none"
-      />
-    </motion.div>
-  );
-};
+// ProjectCard inlined below; local component removed to avoid unused declaration warning
 
 export const Projects = () => {
   const [ref, inView] = useInView({
@@ -112,7 +44,7 @@ export const Projects = () => {
     triggerOnce: true,
   });
 
-  const containerVariants = {
+  const containerVariants: any = {
     hidden: { opacity: 0, scale: 0.95 },
     visible: {
       opacity: 1,
@@ -125,7 +57,7 @@ export const Projects = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: any = {
     hidden: { opacity: 0, y: 20, scale: 0.95 },
     visible: {
       opacity: 1,

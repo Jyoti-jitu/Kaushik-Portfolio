@@ -1,4 +1,4 @@
-import React from 'react';
+// no direct React default import needed with the new JSX transform
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Brain, Code2, Database, Network, FileDown, Mail, Phone } from 'lucide-react';
@@ -9,7 +9,7 @@ export const About = () => {
     triggerOnce: true,
   });
 
-  const containerVariants = {
+  const containerVariants: any = {
     hidden: { opacity: 0, scale: 0.95 },
     visible: {
       opacity: 1,
@@ -22,7 +22,7 @@ export const About = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: any = {
     hidden: { opacity: 0, y: 20, scale: 0.95 },
     visible: {
       opacity: 1,

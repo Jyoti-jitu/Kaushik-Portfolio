@@ -1,4 +1,4 @@
-import React from 'react';
+// automatic JSX runtime - no default React import required
 import { motion } from 'framer-motion';
 import { ArrowRight, Github, Linkedin, Mail, Instagram } from 'lucide-react';
 import { ParticleField } from './ParticleField';

@@ -1,12 +1,12 @@
-import React from 'react';
+import { cloneElement, ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Coffee, Code2, FileCode2, FileJson, Cpu, Boxes, Brain, Network, Github, Github as Git, Database } from 'lucide-react';
+import { Coffee, Code2, FileCode2, FileJson, Cpu, Boxes, Brain, Network, Github, Database } from 'lucide-react';
 
 interface Skill {
   name: string;
   progress: number;
-  icon: React.ReactNode;
+  icon: ReactNode;
 }
 
 const skills: Skill[] = [
@@ -21,45 +21,12 @@ const skills: Skill[] = [
   { name: 'MongoDB', progress: 60, icon: <Database /> },
   { name: 'MySQL', progress: 65, icon: <Database /> },
   { name: 'GitHub', progress: 85, icon: <Github /> },
-  { name: 'Git', progress: 80, icon: <Git /> },
+  { name: 'Git', progress: 80, icon: <Github /> },
 ];
-
-const SkillCard = ({ skill, variants }: { skill: Skill; variants: any }) => {
-  const [ref, inView] = useInView({
-    threshold: 0.2,
-    triggerOnce: true,
-  });
-
-  return (
-    <motion.div
-      ref={ref}
-      variants={variants}
-      className="bg-surface/40 rounded-lg p-6 group hover:translate-y-[-8px] transition-all duration-300 hover:shadow-[0_0_20px_rgba(139,92,246,0.2)] hover:border-purple-500 border border-transparent"
-    >
-      <div className="flex items-center gap-4 mb-4">
-        <div className="text-slate-400 group-hover:text-purple-500 transition-colors duration-300">
-          {React.cloneElement(skill.icon as React.ReactElement, { size: 32 })}
-        </div>
-        <h3 className="text-xl font-semibold text-slate-100">{skill.name}</h3>
-      </div>
-      
-      <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
-        <motion.div
-          initial={{ width: 0 }}
-          animate={inView ? { width: `${skill.progress}%` } : { width: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="h-full bg-purple-500 rounded-full"
-        />
-      </div>
-      <div className="mt-2 text-right text-sm text-slate-400 font-medium">
-        {skill.progress}%
-      </div>
-    </motion.div>
-  );
-};
+// SkillCard removed (not used) — rendering done inline in grid below.
 
 export const Skills = () => {
-  const containerVariants = {
+  const containerVariants: any = {
     hidden: { opacity: 0, scale: 0.95 },
     visible: {
       opacity: 1,
@@ -72,7 +39,7 @@ export const Skills = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: any = {
     hidden: { opacity: 0, y: 20, scale: 0.95 },
     visible: {
       opacity: 1,
@@ -135,7 +102,7 @@ export const Skills = () => {
                 >
                   <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 text-center hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-2">
                     <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                      {React.cloneElement(skill.icon as React.ReactElement, { 
+                      {cloneElement(skill.icon as React.ReactElement, { 
                         size: 48,
                         className: "text-purple-400 group-hover:text-purple-300"
                       })}
@@ -172,7 +139,7 @@ export const Skills = () => {
                 >
                   <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 text-center hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-2">
                     <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                      {React.cloneElement(skill.icon as React.ReactElement, { 
+                      {cloneElement(skill.icon as React.ReactElement, { 
                         size: 48,
                         className: "text-emerald-400 group-hover:text-emerald-300"
                       })}
@@ -209,7 +176,7 @@ export const Skills = () => {
                 >
                   <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 text-center hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-2">
                     <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                      {React.cloneElement(skill.icon as React.ReactElement, { 
+                      {cloneElement(skill.icon as React.ReactElement, { 
                         size: 48,
                         className: "text-slate-400 group-hover:text-purple-300"
                       })}
